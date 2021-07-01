@@ -5,13 +5,20 @@ import Style from './Program.module.scss';
 const Program = (props) => {
     const title = props.title;
     const [fetchedData, setFetchedData] = useState([]);
-    const [filteredData, setFilteredData] = useState();
+    const [filteredData, setFilteredData] = useState([]);
 
     //declare time of days
     const timeWednesday = '2020-07-08';
     const timeThursday = '2020-07-09';
     const timeFriday = '2020-07-10';
     const timeSaturday = '2020-07-11';
+
+    const stages = [
+        {name: 'Rød scene'},
+        {name: 'Blå scene'},
+        {name: 'Grøn scene'},
+        {name: 'Lilla scene'},
+    ]
 
     const filterOptions = [
         {name: 'Onsdag', method: () => {
@@ -27,6 +34,11 @@ const Program = (props) => {
             setFilteredData(fetchedData.filter(elements => elements.local_time.includes(timeSaturday)));
         }},
     ];
+
+    const handleSortAndFilter = (scene) => {
+        const data = filteredData.filter(elements => elements.stage_name.includes(scene));
+        return data;
+    }
 
     const getData = async () => {
         const url = 'https://api.mediehuset.net/mediesuset/events';
@@ -52,15 +64,16 @@ const Program = (props) => {
                 })}
             </div>
             <article className={Style.filterWrapper}>
-                {filteredData && filteredData.map((item, index) => {
+                {stages && stages.map((item, index) => {
                     return (
-                        <figure className={Style.filteredData} key={index}>
-                            <img src={item.image} alt={item.title} />
-                            <figcaption>
-                                <h3>{item.title}</h3>
-                                <p>{item.local_time}</p>
-                            </figcaption>
-                        </figure>
+                        <ul key={index}>
+                            <li>{item.name}</li>
+                            {handleSortAndFilter(item.name).map((item, index) => {
+                                return (
+                                    <li key={index}>{item.title}</li>
+                                )
+                            })}
+                        </ul>
                     )
                 })}
             </article>
