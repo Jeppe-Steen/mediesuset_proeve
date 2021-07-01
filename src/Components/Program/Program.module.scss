@@ -37,18 +37,19 @@ $laptop: 1200px;
             grid-template-columns: repeat(3, 1fr);
         }
 
-        .filteredData {
+        .filterList {
             width: 100%;
-            height: fit-content;
-            overflow: hidden; 
-            background: lightpink;
+            height: fit-content; 
+            list-style: none;
+            border: 1px solid black;
 
-            img {
-                width: 100%;
+            .listHeader {
+                padding: 10px;
+                color: white;
             }
-            
-            figcaption {
-                padding: 20px;
+
+            .listItem {
+                padding: 10px;
             }
         }
     }

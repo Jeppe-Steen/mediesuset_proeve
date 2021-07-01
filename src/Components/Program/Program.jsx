@@ -14,10 +14,10 @@ const Program = (props) => {
     const timeSaturday = '2020-07-11';
 
     const stages = [
-        {name: 'Rød scene'},
-        {name: 'Blå scene'},
-        {name: 'Grøn scene'},
-        {name: 'Lilla scene'},
+        {name: 'Rød scene', color: 'Red'},
+        {name: 'Blå scene', color: 'Blue'},
+        {name: 'Grøn scene', color: 'Green'},
+        {name: 'Lilla scene', color: 'Purple'},
     ]
 
     const filterOptions = [
@@ -49,6 +49,15 @@ const Program = (props) => {
 
     useEffect(() => {
         getData();
+
+        let redHeader = document.querySelector('#Red');
+            redHeader.style.backgroundColor = 'red';
+        let blueHeader = document.querySelector('#Blue');
+            blueHeader.style.backgroundColor = 'blue';
+        let greenHeader = document.querySelector('#Green');
+            greenHeader.style.backgroundColor = 'green';
+        let purpleHeader = document.querySelector('#Purple');
+            purpleHeader.style.backgroundColor = 'purple';
     }, [])
 
     return (
@@ -66,11 +75,11 @@ const Program = (props) => {
             <article className={Style.filterWrapper}>
                 {stages && stages.map((item, index) => {
                     return (
-                        <ul key={index}>
-                            <li>{item.name}</li>
+                        <ul className={Style.filterList} key={index}>
+                            <li id={item.color} className={Style.listHeader}>{item.name}</li>
                             {handleSortAndFilter(item.name).map((item, index) => {
                                 return (
-                                    <li key={index}>{item.title}</li>
+                                    <li className={Style.listItem} key={index}>{item.title}</li>
                                 )
                             })}
                         </ul>

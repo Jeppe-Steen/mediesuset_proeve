@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import Style from './Navigation.module.scss';
 import { useState } from 'react';
 
+import Logo from '../../Assets/Logo.png';
+
 const Navigation = (props) => {
     const loggedIn = props.loggedIn;
     const setLoggedIn = props.setLoggedIn;
@@ -16,6 +18,8 @@ const Navigation = (props) => {
                 <div className={Style.burgerLine}></div>
                 <div className={Style.burgerLine}></div>
             </div>
+
+            <img className={Style.navLogo} src={Logo} alt="logo" />
 
             <nav className={toggleMenu === true ? `${Style.navigationWrapper} ${Style.active}` : Style.navigationWrapper}>
                 <ul className={Style.list}>
