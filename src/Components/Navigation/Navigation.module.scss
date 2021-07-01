@@ -1,0 +1,142 @@
+$laptop: 1200px;
+
+.pageNavigation {
+    width: 100%;
+    height: 15vh;
+    box-shadow: 2px 2px 5px #00000030;
+    background: white;
+
+    z-index: 9000;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    .burgerMenu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        z-index: 9000;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+
+        .burgerLine {
+            background: black;
+            width: 100%;
+            height: 10%;
+        }
+
+        @media (min-width: $laptop) {
+            display: none;
+        }
+    }
+
+    .navigationWrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        background: white;
+        z-index: 9100;
+
+        &.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (min-width: 1200px) {
+            visibility: visible;
+            opacity: 1;
+            background: transparent;
+            height: fit-content;
+            width: fit-content;
+            flex-direction: row;
+
+            position: absolute;
+            bottom: 20px;
+            right: 150px;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            width: 100%;
+            height: 100vh;
+            
+
+            @media (min-width: $laptop) {
+                flex-direction: row;
+                justify-content: unset;
+                align-items: unset;
+                height: unset;
+                width: unset;
+            }
+            
+            .listItem {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-transform: uppercase;
+                padding: 5px 0;
+
+                @media (min-width: $laptop) {
+                    padding: 0 15px;
+                }
+
+                .dropdown {
+                    position: unset;
+                    top: 15px;
+                    background: #dfdfdf50;
+                    list-style: none;
+                    padding: 25px 50px;
+                    display: flex; 
+                    flex-direction: column;
+
+                    @media (min-width: $laptop) {
+                        position: absolute;
+                        top: 15px;
+                        background: white;
+                        list-style: none;
+                        padding: 25px 15px;
+                        display: none; 
+                        flex-direction: column;
+                    }
+                }
+
+                &:hover {
+                    color: salmon;
+                    cursor: pointer;
+
+                    @media (min-width: $laptop) {
+                        .dropdown {
+                            display: flex; 
+                        }
+                    }
+                }
+
+                .links {
+                    color: black;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: salmon;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+$laptop: 1200px;
+
+.filterSection {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .filterHeader {
+        width: 100%;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 30px;
+    }
+    .filterOptions {
+        width: 85%;
+        background: #444;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 10px;
+        text-align: center;
+        color: white;
+    }
+    .filterWrapper {
+        width: 100%;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+
+        @media (min-width: $laptop) {
+            width: 85%;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .filteredData {
+            width: 100%;
+            height: fit-content;
+            overflow: hidden; 
+            background: lightpink;
+
+            img {
+                width: 100%;
+            }
+            
+            figcaption {
+                padding: 20px;
+            }
+        }
+    }
+}
